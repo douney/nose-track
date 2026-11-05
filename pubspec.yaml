@@ -7,15 +7,22 @@ environment:
   sdk: ^3.13.5
 
 dependencies:
+  app_map:
+    path: submodules/app-core/packages/app_map
   app_ui:
     path: submodules/app-core/packages/app_ui
   flutter:
     sdk: flutter
+  maplibre_webview: ^0.3.7+1
+  url_launcher: ^6.3.3
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  maplibre_platform_interface: ^0.3.7+1
 
 flutter:
   uses-material-design: true

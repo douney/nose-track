@@ -1,7 +1,7 @@
 # NoseTrack
 
-Application de mantrailing pour téléphones Android et iPhone. Le squelette contient
-un écran d’accueil et le thème partagé d’`app-core`, sans fonctionnalité métier.
+Application de mantrailing pour téléphones Android et iPhone. L'accueil affiche
+une carte classique OpenStreetMap via OpenFreeMap, déplaçable, zoomable et rotative.
 
 ## Installation
 
@@ -17,7 +17,14 @@ flutter pub get
 ```
 
 Le dépôt commun s’appelle `app-core` et se trouve dans `submodules/app-core`.
-Seul `app_ui` est utilisé pour le moment ; aucun plugin natif n’est ajouté.
+`app_ui` fournit le thème et `app_map` la carte MapLibre. Les sources de fonds sont
+choisies dans NoseTrack. Pour l'instant, seul le fond classique est affiché ; les
+fonds Esri satellite et OpenFreeMap/Mapterhorn relief seront branchés au sélecteur
+de fonds. Aucun GPS ni téléchargement hors connexion n'est activé.
+
+Le package commun expose le contrôleur (changement de fond, centrage sur une
+position, retour au nord) et des emplacements pour les futurs boutons. Voir
+[`app_map`](submodules/app-core/packages/app_map/README.md).
 
 ## Développement
 
@@ -47,6 +54,11 @@ Le thème suit le profil iOS/Android, tandis que les plugins restent exécutés 
 macOS. Le GPS, les permissions, le clavier et les services natifs devront être
 validés sur téléphone lorsqu’ils seront ajoutés.
 
+La carte utilise MapLibre Native sur Android/iOS. L'aperçu Mac utilise le plugin
+`maplibre_webview`, uniquement pour afficher la carte via MapLibre GL JS ; il ne
+valide pas le rendu natif mobile. Les autorisations réseau sont configurées pour
+charger les cartes en ligne.
+
 ## Vérification et builds mobiles
 
 ```sh
@@ -55,6 +67,8 @@ flutter test
 flutter build apk --debug
 flutter build ios --debug --no-codesign
 flutter build macos --debug
+# Vraie carte et commandes de caméra dans l'aperçu Mac (connexion requise) :
+flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/map_test.dart
 ```
 
 iOS cible uniquement l’iPhone. Les identifiants Android/iOS générés sont

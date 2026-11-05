@@ -5,3 +5,5 @@
 # Xcode-related
 **/dgph
 **/xcuserdata/
+# The app workspace owns the Swift package lock.
+Runner.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
