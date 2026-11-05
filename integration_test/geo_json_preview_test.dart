@@ -108,6 +108,54 @@ void main() {
     expect(_names(remaining), containsAll(['point', 'zone']));
     await controller.removeGeoJson('annotations');
     await _waitForScene(tester, state, (scene) => scene['sourceCount'] == 0);
+
+    await controller.setCursor(position: center, accuracyMeters: 25);
+    await tester.pump();
+    final dot = find.byKey(const ValueKey('app-map-cursor-dot'));
+    final arrow = find.byKey(const ValueKey('app-map-cursor-heading'));
+    expect(dot, findsOneWidget);
+    expect(arrow, findsNothing);
+    await _waitForScene(tester, state, (scene) => scene['hasAccuracy'] == true);
+    final projected = state.toScreenLocation(center);
+    final mapOrigin = tester.getTopLeft(find.byType(AppMap));
+    expect(
+      (tester.getCenter(dot) - mapOrigin - projected).distance,
+      lessThan(0.1),
+    );
+
+    await controller.setCursor(
+      position: center,
+      heading: 90,
+      accuracyMeters: 25,
+    );
+    await tester.pump();
+    expect(dot, findsNothing);
+    expect(arrow, findsOneWidget);
+    var rotation = tester.widget<Transform>(
+      find.byKey(const ValueKey('app-map-cursor-rotation')),
+    );
+    expect(rotation.transform.entry(1, 0), closeTo(1, 0.001));
+    await state.moveCamera(bearing: 90);
+    await _waitFor(tester, () => (state.camera!.bearing - 90).abs() < 0.1);
+    await tester.pump();
+    rotation = tester.widget<Transform>(
+      find.byKey(const ValueKey('app-map-cursor-rotation')),
+    );
+    expect(rotation.transform.entry(1, 0), closeTo(0, 0.001));
+
+    final cursorStyle = state.style;
+    state.setStyle(_style);
+    await _waitFor(tester, () => state.style != cursorStyle);
+    await _waitForScene(tester, state, (scene) => scene['hasAccuracy'] == true);
+    expect(arrow, findsOneWidget);
+    await controller.setCursor(position: center, heading: null);
+    await tester.pump();
+    expect(dot, findsOneWidget);
+    await _waitForScene(tester, state, (scene) => scene['sourceCount'] == 0);
+    await controller.clearCursor();
+    await tester.pump();
+    expect(dot, findsNothing);
+    expect(arrow, findsNothing);
     expect(state.camera!.center.lon, closeTo(center.lon, 0.000001));
     expect(state.camera!.center.lat, closeTo(center.lat, 0.000001));
     expect(
@@ -206,6 +254,10 @@ Future<Map<String, dynamic>> _waitForScene(
       const layers = style.layers.filter(layer => sources.includes(layer.source));
       return {
         sourceCount: sources.length,
+        hasAccuracy: sources.some(id => {
+          const data = style.sources[id].data;
+          return data && data.features && data.features.some(feature => feature.id === 'app-map-cursor-accuracy');
+        }),
         names: layers.length ? window.map.queryRenderedFeatures({layers: layers.map(l => l.id)})
           .map(feature => feature.properties.name).filter(Boolean) : [],
         lines: layers.filter(layer => layer.type === 'line').map(layer => ({
