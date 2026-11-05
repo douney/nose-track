@@ -30,6 +30,13 @@ flutter devices
 flutter run -d <device-id>
 ```
 
+Dans VS Code, installer l’extension Flutter recommandée, puis ouvrir
+**Exécuter et déboguer** et lancer avec **F5** :
+
+- **Mac — Aperçu téléphone** lance directement l’aperçu sur macOS.
+- **Téléphone — Android / iOS** utilise l’appareil choisi dans la barre d’état
+  Flutter de VS Code ; sélectionner le téléphone connecté avant de lancer.
+
 macOS sert uniquement de lanceur de développement, pas de cible de distribution.
 Il affiche la vraie application dans un écran de téléphone avec les dix formats
 iPhone/Android de MinifyGo, leurs marges de sécurité et un mode taille libre.
