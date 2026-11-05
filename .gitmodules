@@ -1,0 +1,3 @@
+[submodule "submodules/app-core"]
+	path = submodules/app-core
+	url = git@github.com:douney/app-core.git
