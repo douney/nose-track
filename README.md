@@ -23,7 +23,9 @@ fonds Esri satellite et OpenFreeMap/Mapterhorn relief seront branchés au sélec
 de fonds. Aucun GPS ni téléchargement hors connexion n'est activé.
 
 Le package commun expose le contrôleur (changement de fond, centrage sur une
-position, retour au nord) et des emplacements pour les futurs boutons. Voir
+position, retour au nord), une API de sources GeoJSON nommées
+(`AppMapController.setGeoJson` / `removeGeoJson`) et des emplacements pour les
+futurs boutons. Voir
 [`app_map`](submodules/app-core/packages/app_map/README.md).
 
 ## Développement
@@ -69,6 +71,8 @@ flutter build ios --debug --no-codesign
 flutter build macos --debug
 # Vraie carte et commandes de caméra dans l'aperçu Mac (connexion requise) :
 flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/map_test.dart
+# Sources GeoJSON, styles des parcours, mises à jour et suppressions sur le vrai moteur :
+flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/geo_json_preview_test.dart
 ```
 
 iOS cible uniquement l’iPhone. Les identifiants Android/iOS générés sont
