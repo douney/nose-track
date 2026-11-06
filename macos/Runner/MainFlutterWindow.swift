@@ -9,6 +9,7 @@ class MainFlutterWindow: NSWindow {
     self.setFrame(windowFrame, display: true)
 
     RegisterGeneratedPlugins(registry: flutterViewController)
+    TrackingBridge.register(with: flutterViewController.registrar(forPlugin: "NoseTrackTracking"))
 
     title = "NoseTrack · Aperçu mobile"
     contentMinSize = NSSize(width: 620, height: 512)

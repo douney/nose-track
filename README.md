@@ -1,5 +1,8 @@
 # NoseTrack
 
+Le service de localisation natif, l'API des parcours et leur stockage SQL/JSONL
+sont décrits dans [docs/tracking.md](docs/tracking.md).
+
 Application de mantrailing pour téléphones Android et iPhone. L'accueil affiche
 une carte classique OpenStreetMap via OpenFreeMap, déplaçable, zoomable et rotative.
 
@@ -34,8 +37,9 @@ précision en mètres ; `clearCursor` les masque. Voir
 Les déclarations de localisation pendant l'utilisation et de notifications sont
 configurées dans NoseTrack. Aucun dialogue n'est lancé au démarrage ; les futurs
 écrans utiliseront [`app_permissions`](submodules/app-core/packages/app_permissions/README.md).
-L'accès « toujours » et le service de localisation restent à intégrer selon le
-besoin réel. L'aperçu Mac renvoie explicitement `unsupported` pour ces autorisations.
+Le service natif gère l'enregistrement en arrière-plan sans demander l'accès
+« toujours ». L'aperçu Mac renvoie explicitement `unsupported` pour les autorisations
+de téléphone ; son catalogue et ses imports de traces restent utilisables.
 
 ## Développement
 

@@ -28,6 +28,12 @@
 		33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F42044A3C60003C045 /* MainMenu.xib */; };
 		33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC11122044BFA00003C045 /* MainFlutterWindow.swift */; };
 		78A318202AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 78A3181F2AECB46A00862997 /* FlutterGeneratedPluginSwiftPackage */; };
+		ABCD00000000000000000002 /* TrackingFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000001 /* TrackingFailure.swift */; };
+		ABCD00000000000000000102 /* TraceJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000101 /* TraceJournal.swift */; };
+		ABCD00000000000000000202 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000201 /* TrackStore.swift */; };
+		ABCD00000000000000000302 /* GeolocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000301 /* GeolocationEngine.swift */; };
+		ABCD00000000000000000402 /* TrackingBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000401 /* TrackingBridge.swift */; };
+		ABCD00000000000000000502 /* TraceRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000501 /* TraceRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +86,12 @@
 		78E0A7A72DC9AD7400C4905E /* FlutterGeneratedPluginSwiftPackage */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = FlutterGeneratedPluginSwiftPackage; path = ephemeral/Packages/FlutterGeneratedPluginSwiftPackage; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		ABCD00000000000000000001 /* TrackingFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingFailure.swift; path = "../../native/apple/Domain/TrackingFailure.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000101 /* TraceJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceJournal.swift; path = "../../native/apple/Storage/TraceJournal.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000201 /* TrackStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackStore.swift; path = "../../native/apple/Storage/TrackStore.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000301 /* GeolocationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeolocationEngine.swift; path = "../../native/apple/Geolocation/GeolocationEngine.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000401 /* TrackingBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingBridge.swift; path = "../../native/apple/TrackingBridge.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000501 /* TraceRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceRecorder.swift; path = "../../native/apple/Domain/TraceRecorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,12 @@
 			isa = PBXGroup;
 			children = (
 				33CC10F02044A3C60003C045 /* AppDelegate.swift */,
+				ABCD00000000000000000401 /* TrackingBridge.swift */,
+				ABCD00000000000000000301 /* GeolocationEngine.swift */,
+				ABCD00000000000000000201 /* TrackStore.swift */,
+				ABCD00000000000000000101 /* TraceJournal.swift */,
+				ABCD00000000000000000001 /* TrackingFailure.swift */,
+				ABCD00000000000000000501 /* TraceRecorder.swift */,
 				33CC11122044BFA00003C045 /* MainFlutterWindow.swift */,
 				33E51913231747F40026EE4D /* DebugProfile.entitlements */,
 				33E51914231749380026EE4D /* Release.entitlements */,
@@ -356,6 +374,12 @@
 			files = (
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
+				ABCD00000000000000000402 /* TrackingBridge.swift in Sources */,
+				ABCD00000000000000000302 /* GeolocationEngine.swift in Sources */,
+				ABCD00000000000000000202 /* TrackStore.swift in Sources */,
+				ABCD00000000000000000102 /* TraceJournal.swift in Sources */,
+				ABCD00000000000000000002 /* TrackingFailure.swift in Sources */,
+				ABCD00000000000000000502 /* TraceRecorder.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

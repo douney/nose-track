@@ -28,6 +28,12 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>NoseTrack utilise votre position pour afficher votre emplacement et enregistrer vos parcours.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSMotionUsageDescription</key>
+	<string>NoseTrack utilise les capteurs du téléphone pour orienter le curseur sur la carte.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

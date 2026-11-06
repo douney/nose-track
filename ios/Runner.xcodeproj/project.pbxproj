@@ -16,6 +16,12 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		ABCD00000000000000000002 /* TrackingFailure.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000001 /* TrackingFailure.swift */; };
+		ABCD00000000000000000102 /* TraceJournal.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000101 /* TraceJournal.swift */; };
+		ABCD00000000000000000202 /* TrackStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000201 /* TrackStore.swift */; };
+		ABCD00000000000000000302 /* GeolocationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000301 /* GeolocationEngine.swift */; };
+		ABCD00000000000000000402 /* TrackingBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000401 /* TrackingBridge.swift */; };
+		ABCD00000000000000000502 /* TraceRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCD00000000000000000501 /* TraceRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,12 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABCD00000000000000000001 /* TrackingFailure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingFailure.swift; path = "../../native/apple/Domain/TrackingFailure.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000101 /* TraceJournal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceJournal.swift; path = "../../native/apple/Storage/TraceJournal.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000201 /* TrackStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackStore.swift; path = "../../native/apple/Storage/TrackStore.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000301 /* GeolocationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GeolocationEngine.swift; path = "../../native/apple/Geolocation/GeolocationEngine.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000401 /* TrackingBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrackingBridge.swift; path = "../../native/apple/TrackingBridge.swift"; sourceTree = "<group>"; };
+		ABCD00000000000000000501 /* TraceRecorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraceRecorder.swift; path = "../../native/apple/Domain/TraceRecorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +134,12 @@
 				1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */,
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				74858FAE1ED2DC5600515810 /* AppDelegate.swift */,
+				ABCD00000000000000000401 /* TrackingBridge.swift */,
+				ABCD00000000000000000301 /* GeolocationEngine.swift */,
+				ABCD00000000000000000201 /* TrackStore.swift */,
+				ABCD00000000000000000101 /* TraceJournal.swift */,
+				ABCD00000000000000000001 /* TrackingFailure.swift */,
+				ABCD00000000000000000501 /* TraceRecorder.swift */,
 				7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
 			);
@@ -282,6 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				ABCD00000000000000000402 /* TrackingBridge.swift in Sources */,
+				ABCD00000000000000000302 /* GeolocationEngine.swift in Sources */,
+				ABCD00000000000000000202 /* TrackStore.swift in Sources */,
+				ABCD00000000000000000102 /* TraceJournal.swift in Sources */,
+				ABCD00000000000000000002 /* TrackingFailure.swift in Sources */,
+				ABCD00000000000000000502 /* TraceRecorder.swift in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */,
 			);
