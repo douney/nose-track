@@ -17,10 +17,12 @@ flutter pub get
 ```
 
 Le dépôt commun s’appelle `app-core` et se trouve dans `submodules/app-core`.
-`app_ui` fournit le thème et `app_map` la carte MapLibre. Les sources de fonds sont
-choisies dans NoseTrack. Pour l'instant, seul le fond classique est affiché ; les
-fonds Esri satellite et OpenFreeMap/Mapterhorn relief seront branchés au sélecteur
-de fonds. Aucun GPS ni téléchargement hors connexion n'est activé.
+`app_ui` fournit le thème, `app_map` la carte MapLibre et `app_permissions` les
+vérifications et demandes explicites d'autorisations Android/iOS. Les sources de
+fonds sont choisies dans NoseTrack. Pour l'instant, seul le fond classique est
+affiché ; les fonds Esri satellite et OpenFreeMap/Mapterhorn relief seront branchés
+au sélecteur de fonds. L'interface n'active pas encore la localisation et aucun
+téléchargement hors connexion n'est proposé.
 
 Le package commun expose le contrôleur (changement de fond, centrage sur une
 position, retour au nord), une API de sources GeoJSON nommées
@@ -28,6 +30,12 @@ position, retour au nord), une API de sources GeoJSON nommées
 futurs boutons. `setCursor` affiche une position, un cap optionnel et un disque de
 précision en mètres ; `clearCursor` les masque. Voir
 [`app_map`](submodules/app-core/packages/app_map/README.md).
+
+Les déclarations de localisation pendant l'utilisation et de notifications sont
+configurées dans NoseTrack. Aucun dialogue n'est lancé au démarrage ; les futurs
+écrans utiliseront [`app_permissions`](submodules/app-core/packages/app_permissions/README.md).
+L'accès « toujours » et le service de localisation restent à intégrer selon le
+besoin réel. L'aperçu Mac renvoie explicitement `unsupported` pour ces autorisations.
 
 ## Développement
 
@@ -74,6 +82,8 @@ flutter build macos --debug
 flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/map_test.dart
 # Sources GeoJSON, styles et curseur avec cap/précision sur le vrai moteur :
 flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/geo_json_preview_test.dart
+# Vérifications d'autorisations sans demande ni ouverture des réglages :
+flutter drive -d macos --driver test_driver/integration_test.dart --target integration_test/permissions_test.dart
 ```
 
 iOS cible uniquement l’iPhone. Les identifiants Android/iOS générés sont

@@ -9,6 +9,8 @@ environment:
 dependencies:
   app_map:
     path: submodules/app-core/packages/app_map
+  app_permissions:
+    path: submodules/app-core/packages/app_permissions
   app_ui:
     path: submodules/app-core/packages/app_ui
   flutter:
