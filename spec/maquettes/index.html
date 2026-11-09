@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#27765b">
+  <title>NoseTrack — Maquette de l’accueil</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%2327765b'/%3E%3Cpath d='M11 27 20 11l9 16-9-5z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <symbol id="i-paw" viewBox="0 0 24 24"><path d="M8.4 14.3c1.8-3.6 5.4-3.6 7.2 0 1.3 1.9 3.5 3.1 2.3 5.1-1.3 2.3-4.3.4-5.9.4s-4.6 1.9-5.9-.4c-1.2-2 1-3.2 2.3-5.1Z" fill="currentColor" stroke="none"/><ellipse cx="5" cy="10" rx="2.3" ry="3" transform="rotate(-25 5 10)" fill="currentColor" stroke="none"/><ellipse cx="10" cy="6" rx="2.2" ry="3" transform="rotate(-8 10 6)" fill="currentColor" stroke="none"/><ellipse cx="15.3" cy="6.2" rx="2.2" ry="3" transform="rotate(12 15.3 6.2)" fill="currentColor" stroke="none"/><ellipse cx="19.5" cy="10.5" rx="2.2" ry="2.8" transform="rotate(27 19.5 10.5)" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="i-map" viewBox="0 0 24 24"><path d="m3 5 6-2 6 2 6-2v16l-6 2-6-2-6 2V5Zm6-2v16m6-14v16"/></symbol>
+      <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 3h14v18H6a3 3 0 0 1 0-6h13M5 3v12m4-8h6"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-2a6 6 0 0 1 12 0v2m0-16a3 3 0 0 1 0 6m3 4a5 5 0 0 1 3 4v2"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 10 5-10 5L2 8l10-5ZM2 12l10 5 10-5M2 16l10 5 10-5"/></symbol>
+      <symbol id="i-locate" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></symbol>
+      <symbol id="i-route" viewBox="0 0 24 24"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 5h9a4 4 0 0 1 0 8H8a4 4 0 0 0 0 8h6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+      <symbol id="i-signal" viewBox="0 0 24 24"><path d="M4 19v-3m5 3v-7m5 7V8m5 11V4"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    </defs>
+  </svg>
+
+  <main class="review-layout">
+    <aside class="review-intro">
+      <a class="review-brand" href="../fonctionnalites.md"><svg class="icon"><use href="#i-paw"/></svg>NoseTrack</a>
+      <p class="eyebrow">MAQUETTE 01 · ACCUEIL</p>
+      <h1>La carte.<br>Et c’est parti.</h1>
+      <p class="intro-copy">Le terrain au premier plan, les bons outils à portée de main.</p>
+      <div class="review-divider"></div>
+      <p class="control-label">FORMAT DU TÉLÉPHONE</p>
+      <div class="device-options" aria-label="Format du téléphone">
+        <button data-device="compact" aria-pressed="false">Compact<span>360 × 780</span></button>
+        <button data-device="standard" aria-pressed="true">Standard<span>390 × 844</span></button>
+      </div>
+      <p class="control-label scenario-label">ÉTATS À EXPLORER</p>
+      <div class="scenario-options" aria-label="États de la maquette">
+        <button data-scenario="idle" aria-pressed="true"><span class="scenario-dot"></span>Au repos</button>
+        <button data-scenario="tracer" aria-pressed="false"><svg class="icon"><use href="#i-route"/></svg>En mode traceur</button>
+        <button data-scenario="dog" aria-pressed="false"><svg class="icon"><use href="#i-paw"/></svg>En mode chien</button>
+      </div>
+      <p class="prototype-note">Prototype local · données fictives<br>Carte et fonds illustrés, sans service GPS.</p>
+    </aside>
+
+    <div class="phone-stage">
+    <div class="phone-shell" id="phoneShell">
+      <div class="phone-screen" id="phoneScreen">
+        <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="camera-island"></span><span class="system-icons"><svg class="icon"><use href="#i-signal"/></svg><svg viewBox="0 0 20 16"><path d="M2 5a12 12 0 0 1 16 0M5 8a7 7 0 0 1 10 0m-7 3a3 3 0 0 1 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="10" cy="14" r="1" fill="currentColor"/></svg><span class="battery"></span></span></div>
+
+        <div class="map-viewport" id="mapViewport" tabindex="0" role="region" aria-label="Carte interactive : flèches pour déplacer, plus et moins pour zoomer, N pour le nord, origine pour recentrer">
+          <svg class="map-svg" id="mapSvg" viewBox="0 0 600 1120" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <pattern id="tree-pattern" width="38" height="42" patternUnits="userSpaceOnUse"><circle cx="7" cy="8" r="1.8" fill="var(--tree-dot)"/><circle cx="27" cy="30" r="1.3" fill="var(--tree-dot)"/></pattern>
+              <pattern id="field-pattern" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(24)"><path d="M1 0v12" stroke="var(--field-line)" stroke-width="1"/></pattern>
+              <pattern id="satellite-pattern" width="57" height="61" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="17" fill="#34472c"/><circle cx="42" cy="29" r="20" fill="#485737"/><circle cx="13" cy="50" r="15" fill="#52633e"/><circle cx="53" cy="60" r="18" fill="#293e2b"/></pattern>
+              <filter id="cursor-shadow" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#2b4938" flood-opacity=".18"/></filter>
+            </defs>
+            <rect class="map-base" x="-1500" y="-1500" width="3600" height="4200"/>
+            <g id="mapWorld">
+              <path class="forest" d="M-500-500H1100V160L860 200 673 150 604 244 525 273 485 384 397 435 275 496 220 596 110 631 28 735-500 790Z"/>
+              <path class="forest texture" d="M-500-500H1100V160L860 200 673 150 604 244 525 273 485 384 397 435 275 496 220 596 110 631 28 735-500 790Z"/>
+              <path class="forest forest-secondary" d="m-180 850 186-113 123-29 125 35 102 144 208 60 180 113v440H-180Z"/>
+              <path class="forest texture" d="m-180 850 186-113 123-29 125 35 102 144 208 60 180 113v440H-180Z"/>
+              <path class="field" d="m466 390 67-105 153-45 208 59-26 221-236 58-137-83Z"/>
+              <path class="field field-lined" d="m466 390 67-105 153-45 208 59-26 221-236 58-137-83Z"/>
+              <path class="field field-light" d="m339 634 114-159 148 67 56 120-149 139-109-22Z"/>
+              <path class="meadow" d="m208 515 61-41 121-57 64 47-112 173-127 9-53-48Z"/>
+              <path class="meadow meadow-light" d="m2 700 101-68 101 22 103 111-83 43-102-67Z"/>
+              <path class="water" d="M660 480c-128 33-140 106-159 190s-75 97-120 155-17 144-91 205-157 46-205 143"/>
+              <path class="water-bank" d="M660 480c-128 33-140 106-159 190s-75 97-120 155-17 144-91 205-157 46-205 143"/>
+              <g class="contours" fill="none" stroke="#aa9272" stroke-width="1.2" opacity=".45">
+                <path d="M-100 160C90 50 200 160 286 102s140-25 224-90 164-81 300-21M-100 191C91 83 194 195 292 134S434 120 522 47 700-14 810 8M-100 231C84 126 203 229 307 172s131-13 230-90 149-53 270-38M-100 277C74 168 221 273 326 218s122-8 236-92 151-36 251-36M-100 331C101 206 232 318 351 267s145-16 253-90 129-29 215-23M-100 390C106 274 233 371 376 319s139-21 245-84 144-23 204-15M-100 447C100 327 252 429 399 374s144-13 248-78 138-22 185-13M-100 506C106 391 260 492 417 430s135 0 250-70 121-22 166-15M-100 574C119 453 271 553 448 491s130 0 240-59 119-20 153-14M-100 640C113 530 289 616 469 556s141-6 244-51 100-18 138-12M-100 713C146 584 313 689 485 626s135-13 259-63 85-14 117-9M-100 788C130 659 335 761 503 698s151-14 264-64 77-15 106-9M-100 855C138 740 344 835 526 769s151-17 265-66 61-12 97-10"/>
+              </g>
+              <g class="road-casing" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-170 1100C22 937 90 902 140 804s128-112 219-155 168-34 241-67 100-96 180-140"/>
+                <path d="M140 804C113 735 72 673-31 647l-120-39"/>
+              </g>
+              <g class="road" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-170 1100C22 937 90 902 140 804s128-112 219-155 168-34 241-67 100-96 180-140"/>
+                <path d="M140 804C113 735 72 673-31 647l-120-39"/>
+              </g>
+              <g class="path-casing" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-90 303C77 353 75 451 180 470s182 48 212-65 50-126 106-201S633 54 690-60"/>
+                <path d="M180 470c-13-105-12-172 32-226s43-115 15-220"/>
+                <path d="M392 405c60 12 58 69 97 91s46 77 78 103"/>
+                <path d="M180 470c29 70 53 113 121 165"/>
+              </g>
+              <g class="paths" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M-90 303C77 353 75 451 180 470s182 48 212-65 50-126 106-201S633 54 690-60"/>
+                <path d="M180 470c-13-105-12-172 32-226s43-115 15-220"/>
+                <path d="M392 405c60 12 58 69 97 91s46 77 78 103"/>
+                <path d="M180 470c29 70 53 113 121 165"/>
+              </g>
+              <g class="small-paths" fill="none" stroke-linecap="round">
+                <path d="M37 144c82 51 121 72 176 100M212 244c48 78 124 83 190 133M-80 523c122 56 172 30 260-53M301 635c58 81 95 87 148 106M84 952c62 7 121 40 176 85M437 302c61 36 71 30 121 22"/>
+              </g>
+              <g class="buildings" stroke-width="2">
+                <path d="m234 728 32-20 15 24-32 20Zm50-30 22-14 17 24-22 14Zm-60 65 23-15 18 27-23 15Zm98-84 39-16 10 24-39 16Zm-185 61 20-11 12 23-20 11Zm238-83 28-12 9 21-28 12Z"/>
+                <path d="m33 807 36-24 18 27-36 24Zm15 47 24-16 14 21-24 16Z"/>
+              </g>
+              <g class="map-label" data-x="285" data-y="251"><text class="wood-label" text-anchor="middle">BOIS DES PINS</text><text class="sub-label" y="23" text-anchor="middle">Forêt communale</text></g>
+              <g class="map-label" data-x="105" data-y="398"><text class="trail-label" text-anchor="middle">Sentier des Fougères</text></g>
+              <g class="map-label" data-x="420" data-y="384"><text class="trail-label" text-anchor="middle">Chemin des Chênes</text></g>
+              <g class="map-label" data-x="326" data-y="570"><text class="place-label" text-anchor="middle">La Clairière</text></g>
+              <g class="map-label" data-x="410" data-y="834"><text class="water-label" text-anchor="middle">Le Ruisseau</text></g>
+              <g class="map-label" data-x="132" data-y="898"><text class="place-label" text-anchor="middle">Les Granges</text></g>
+              <g class="map-label altitude-label" data-x="133" data-y="220"><text>380 m</text></g>
+              <g class="map-label altitude-label" data-x="450" data-y="152"><text>420 m</text></g>
+              <g class="map-label" data-x="231" data-y="666"><rect class="parking-pin" x="-13" y="-16" width="26" height="28" rx="6"/><text class="parking-label" text-anchor="middle" y="4">P</text></g>
+              <path id="referencePath" d="M300 486C349 491 376 468 392 405s23-96 55-133 48-47 51-68" class="reference-trace" hidden/>
+              <path id="recordedPath" d="M300 486C343 493 379 464 393 409s9-89 41-127 57-41 63-78" class="recorded-trace" hidden/>
+              <g id="locationMarker" transform="translate(300 486)">
+                <circle class="accuracy-ring" id="accuracyRing" r="36"/>
+                <g filter="url(#cursor-shadow)"><circle class="location-white" r="15"/><circle class="location-dot" r="10"/><path class="heading-cone" d="M-15-20 0-43 15-20Z"/></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <header class="app-header">
+          <div class="app-brand"><span class="brand-mark"><svg class="icon"><use href="#i-paw"/></svg></span><span>NoseTrack</span></div>
+          <button class="avatar" id="profileButton" aria-label="Ouvrir mon profil">CL</button>
+        </header>
+        <div class="position-status"><span class="status-dot"></span><span>Position précise</span><span class="accuracy-label">± 4 m</span></div>
+        <div class="trace-legend" id="traceLegend" hidden><span class="legend-reference">Traceur</span><span class="legend-dog">Chien</span></div>
+        <button class="session-badge" id="sessionBadge" hidden><svg class="icon"><use href="#i-users"/></svg><span id="sessionBadgeLabel"></span><span class="live-label" id="liveBadge" hidden>LIVE</span></button>
+
+        <div class="map-controls">
+          <button class="map-button compass-button" id="northButton" aria-label="Remettre le cap au nord" title="Remettre le cap au nord"><span>N</span><svg id="compassArrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 5 10-5-2-5 2Z" fill="#c16b55"/><path d="m12 22 5-10-5 2-5-2Z" fill="#b1b8b0"/></svg></button>
+          <button class="map-button" id="layersButton" aria-label="Choisir le fond et les couches de la carte" title="Fonds et couches"><svg class="icon"><use href="#i-layers"/></svg></button>
+        </div>
+        <button class="map-button center-button" id="centerButton" aria-label="Centrer sur ma position" title="Centrer sur ma position"><svg class="icon"><use href="#i-locate"/></svg></button>
+        <div class="map-scale" aria-hidden="true"><span id="scaleLabel">50 m</span><i></i></div>
+        <span class="map-attribution">NoseTrack · Carte illustrée</span>
+
+        <section class="action-card" id="idleCard" aria-label="Nouvelle piste">
+          <div class="idle-card-heading"><span class="small-paw"><svg class="icon"><use href="#i-paw"/></svg></span><div><h2>Une nouvelle piste ?</h2><p>À vous de choisir le prochain départ.</p></div></div>
+          <button class="primary-button" id="newTrackButton"><svg class="icon"><use href="#i-plus"/></svg>Enregistrer une trace<svg class="icon end-icon"><use href="#i-arrow"/></svg></button>
+        </section>
+        <section class="action-card recording-card" id="recordingCard" aria-label="Enregistrement en cours" hidden>
+          <div class="recording-heading"><span class="recording-label"><span class="recording-dot"></span><span id="recordingRole">Traceur</span></span><span class="recording-state">Enregistrement en cours</span></div>
+          <div class="recording-body"><div class="recording-metric"><span id="recordingTime">00:00</span><small>Durée</small></div><div class="recording-metric"><span id="recordingDistance">0 <em>m</em></span><small>Distance</small></div><button class="stop-button" id="stopButton"><span></span>Terminer</button></div>
+        </section>
+
+        <nav class="bottom-nav" aria-label="Navigation principale">
+          <button class="nav-item active" data-nav="map" aria-current="page"><svg class="icon"><use href="#i-map"/></svg><span>Carte</span></button>
+          <button class="nav-item" data-nav="notebook"><svg class="icon"><use href="#i-book"/></svg><span>Carnet</span></button>
+          <button class="nav-item" data-nav="session"><svg class="icon"><use href="#i-users"/></svg><span>Session</span><i id="sessionNavDot" hidden></i></button>
+        </nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+        <div class="sheet-overlay" id="sheetOverlay" hidden>
+          <section class="bottom-sheet" id="bottomSheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" tabindex="-1"></section>
+        </div>
+      </div>
+    </div>
+
+    </div>
+    <aside class="review-notes">
+      <span class="version-pill"><span></span>Prototype interactif</span>
+      <div class="design-note"><span class="note-number">01</span><h2>La carte respire</h2><p>Une vue plein écran, une position lisible et des commandes discrètes.</p></div>
+      <div class="design-note"><span class="note-number">02</span><h2>Un départ évident</h2><p>Une action principale, puis le choix entre traceur et chien.</p></div>
+      <div class="design-note"><span class="note-number">03</span><h2>Toujours à portée</h2><p>Fonds, cap nord et centrage accessibles d’une main.</p></div>
+      <div class="review-divider"></div>
+      <p class="gesture-note">Glisser pour déplacer<br>Molette pour zoomer<br>Maj + glisser pour pivoter</p>
+      <a class="spec-link" href="README.md">Lire les interactions prévues <span>↗</span></a>
+    </aside>
+  </main>
+</body>
+</html>
