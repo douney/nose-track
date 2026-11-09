@@ -1,14 +1,20 @@
-# Localisation et stockage des parcours
+# Localisation et stockage natifs
 
-Le module appartient à NoseTrack. Il ne dépend d'aucun nouveau package et ne
-modifie pas `app-core`. Les permissions restent centralisées dans `app_permissions`.
+Ce document décrit les API et le stockage déjà implémentés dans NoseTrack.
+Les permissions sont centralisées dans `app_permissions`, fourni par `app-core`.
+Le module de géolocalisation reste propre à l'application.
+
+Les règles métier du produit cible sont décrites dans les
+[spécifications](../spec/README.md). Le quota chien, la validation minimale de
+cinq secondes, les comptes, les rapports et les transferts de sessions ne font
+pas encore partie de ces API natives.
 
 ## Organisation
 
 ```text
 lib/domain/location/           Fix GPS, sans dépendance Flutter ou SQL
 lib/domain/tracks/             Rôles, cible d'enregistrement et points
-lib/modules/geolocation/      API du service et états de localisation
+lib/modules/geolocation/       API du service et états de localisation
 lib/data/tracks/               Catalogue, modèles SQL et TrackRepository
 lib/platform/                 Transport MethodChannel / EventChannel commun
 assets/sql/tracks_v1.sql       Schéma SQLite unique pour Android et Apple
@@ -24,8 +30,8 @@ native/apple/
   TrackingBridge.swift        Coordination et pont Flutter
 ```
 
-L'interface actuelle reste une carte : ce changement fournit les API natives,
-sans ajouter de boutons d'enregistrement ni demander de permission au lancement.
+L'interface actuelle reste une carte, sans boutons d'enregistrement ni demande
+de permission au lancement.
 Les constructeurs par défaut du service et du repository partagent le même
 transport et le même runtime natif. `initialize()` est aussi appelé à la première
 opération du repository. Initialiser ne démarre aucune acquisition.
@@ -47,7 +53,7 @@ await location.setMode(
 // Depuis le bouton d'arrêt, application active :
 await location.setMode(GeolocationMode.foreground);
 
-// Ultérieurement, enregistrer le chien sur ce même parcours :
+// Ultérieurement, enregistrer le chien sur cette même piste :
 await location.setMode(
   GeolocationMode.tracking,
   target: RecordingTarget(trackId: track.id, role: TrackRole.dog),
@@ -95,6 +101,7 @@ pas le journal pour reconstituer les points manqués.
 
 Les fixes sont limités à un point retenu par seconde sur leur date de mesure.
 Aucun point artificiel n'est créé lorsque le système ne fournit pas de fix.
+Cette limite de 1 Hz est un plafond, pas une garantie de réception chaque seconde.
 Le premier fix doit dater du démarrage de l'acquisition ou après celui-ci.
 Les coordonnées sont WGS84 en degrés, la précision horizontale en mètres,
 l'altitude facultative au-dessus de l'ellipsoïde WGS84, la vitesse en m/s et le
@@ -104,7 +111,7 @@ course GPS en degrés. Le course n'est pas la boussole du téléphone.
 
 | Méthode | Contrat |
 | --- | --- |
-| `createTrack(name, description?, dogName?)` | Crée un parcours, sans fichier GPS. |
+| `createTrack(name, description?, dogName?)` | Crée une fiche de piste, sans fichier GPS. |
 | `listTracks(filter?)` | Métadonnées par date de création décroissante. |
 | `getTrack(trackId)` | Métadonnées, ou `null` si absent. |
 | `updateTrack(trackId, changes)` | Édite `name`, `description`, `dogName`. |
@@ -139,10 +146,14 @@ inclusif, `createdBefore` exclusif, `hasTracer` et `hasDog`. La recherche SQL
 standard ne garantit pas un repli Unicode complet de la casse.
 
 L'import valide la copie temporaire avant de l'installer, conserve l'original et
-réécrit uniquement l'identité du header pour rattacher la copie au parcours et au
+réécrit uniquement l'identité du header pour rattacher la copie à la piste et au
 rôle. Les points sont conservés. Un rôle déjà présent ne peut pas être remplacé.
 Les métadonnées techniques sont calculées par le module, jamais éditées via
-`updateTrack`. Supprimer le parcours en cours d'enregistrement est refusé.
+`updateTrack`. Supprimer la piste en cours d'enregistrement est refusé.
+
+`importTrace` importe un rôle dans une fiche existante. Le futur import d'une
+piste partagée devra créer une nouvelle fiche puis y importer ses rôles ; son
+format d'échange et la reprise des transferts réseau restent à définir.
 
 Les erreurs natives sont des `PlatformException` avec un code stable, notamment
 `invalidArgument`, `trackNotFound`, `traceNotFound`, `traceAlreadyExists`,
@@ -167,7 +178,7 @@ NoseTrack/
 
 Les références SQL sont relatives à cette racine. Le schéma complet est dans
 [`tracks_v1.sql`](../assets/sql/tracks_v1.sql), chargé par les deux plateformes.
-Il contient une ligne par parcours, `dog_name` inclus, et les mêmes sept colonnes
+Il contient une ligne par piste, `dog_name` inclus, et les mêmes sept colonnes
 pour chacun des deux rôles. Dates : entiers UTC en millisecondes ; coordonnées :
 `REAL` ; nom obligatoire ; autres textes utilisateur facultatifs.
 
@@ -180,10 +191,10 @@ de synchronisation cloud.
 
 JSONL UTF-8, une ligne terminée par `\n` par enregistrement :
 
-```json
+```jsonl
 {"type":"header","version":1,"trackId":"UUID","role":"tracer","startedAt":1000}
 {"type":"point","sequence":1,"segmentId":1,"timestamp":2000,"latitude":48.1,"longitude":2.3,"accuracyMeters":3.0,"altitudeMeters":null,"speedMetersPerSecond":1.2,"courseDegrees":null}
-{"type":"end","endedAt":3000}
+{"type":"end","endedAt":8000}
 ```
 
 Le natif est l'unique écrivain. Chaque ligne retenue est écrite et synchronisée
@@ -193,7 +204,7 @@ reste immuable. Une coupure de mesures de plus de dix secondes ouvre un nouveau
 segment, afin de pouvoir conserver les discontinuités.
 
 Après destruction du processus, aucune acquisition ni aucun foreground service
-n'est automatiquement relancé. Les sessions SQL restées en `recording` sont
+n'est automatiquement relancé. Les traces SQL restées en `recording` sont
 réconciliées avec le fichier : footer présent = `finished`, sinon `interrupted`.
 La fin de ligne incomplète est tronquée. Un header initial incomplet sans point
 est nettoyé. Un fichier installé juste avant une interruption de la mise à jour
@@ -202,6 +213,12 @@ SQL est rattaché au rôle correspondant.
 Une action explicite `setMode(tracking, target: ...)` peut reprendre une trace
 `interrupted`, en conservant ses points et sa séquence, dans un nouveau segment.
 Une trace `finished` ne peut jamais être reprise ou remplacée.
+
+Le parcours utilisateur à l'ouverture avec les choix reprendre, abandonner ou
+terminer sans nouvelle acquisition est défini dans
+[les spécifications de récupération](../spec/technique.md#récupération-à-louverture).
+Ce parcours et la finalisation d'une trace interrompue sans reprise restent à
+intégrer ; ils ne sont pas des commandes supplémentaires de l'API actuelle.
 
 ## Vérification
 

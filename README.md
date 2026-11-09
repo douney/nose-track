@@ -1,10 +1,20 @@
 # NoseTrack
 
-Le service de localisation natif, l'API des parcours et leur stockage SQL/JSONL
-sont décrits dans [docs/tracking.md](docs/tracking.md).
-
 Application de mantrailing pour téléphones Android et iPhone. L'accueil affiche
 une carte classique OpenStreetMap via OpenFreeMap, déplaçable, zoomable et rotative.
+
+## Documentation
+
+- [Index des spécifications](spec/README.md) : produit cible, règles métier,
+  rapports, bases de données et maquette.
+- [Localisation et stockage natifs](docs/tracking.md) : API déjà implémentées,
+  format JSONL, récupération et commandes de vérification.
+
+Les spécifications décrivent les fonctionnalités prévues. L'application actuelle
+affiche la carte ; les API natives de localisation et de stockage sont présentes,
+avec leurs tests, mais leurs parcours d'interface restent à construire. Les
+comptes, abonnements, rapports, sessions, transferts et Track Assist ne sont pas
+encore implémentés.
 
 ## Installation
 
@@ -66,8 +76,8 @@ Le format choisi garde sa résolution logique et se réduit pour tenir dans la
 fenêtre. Changer de format conserve l’état de l’application et ses routes.
 
 Le thème suit le profil iOS/Android, tandis que les plugins restent exécutés sur
-macOS. Le GPS, les permissions, le clavier et les services natifs devront être
-validés sur téléphone lorsqu’ils seront ajoutés.
+macOS. Le GPS, les permissions, le clavier et la tenue des services natifs en
+arrière-plan se valident sur téléphone réel.
 
 La carte utilise MapLibre Native sur Android/iOS. L'aperçu Mac utilise le plugin
 `maplibre_webview`, uniquement pour afficher la carte via MapLibre GL JS ; il ne
